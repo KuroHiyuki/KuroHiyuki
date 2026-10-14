@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/header.svg" alt="Nguyễn Phương, Fullstack Developer" width="100%">
+<img src="assets/header.svg" alt="Nguyễn Phương, Software Engineer" width="100%">
 
 <img src="assets/marquee.svg" alt="Fullstack Developer / Web / API / Cloud" width="100%">
 
@@ -16,13 +16,13 @@
 <div align="center">
 
 <!-- Thay USERNAME bằng username GitHub của bạn -->
-<img src="https://ghchart.rshah.org/000000/USERNAME" alt="Contribution graph" width="100%">
+<img src="https://ghchart.rshah.org/000000/KuroHiyuki" alt="Contribution graph" width="100%">
 
 <br><br>
 
 <!-- Thay YOUR-LINKEDIN, YOUR-EMAIL, YOUR-BLOG-URL bằng thông tin của bạn -->
-<a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
-<a href="mailto:YOUR-EMAIL"><img src="https://img.shields.io/badge/Email-FF8FAB?style=for-the-badge&logo=gmail&logoColor=000000" alt="Email"></a>
-<a href="https://YOUR-BLOG-URL"><img src="https://img.shields.io/badge/Blog-8CE99A?style=for-the-badge&logo=rss&logoColor=000000" alt="Blog"></a>
+<a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">https://www.linkedin.com/in/phuongnh030236</a>
+<a href="mailto:YOUR-EMAIL"><img src="https://img.shields.io/badge/Email-FF8FAB?style=for-the-badge&logo=gmail&logoColor=000000" alt="Email">phuongnguyen030236@gmail.com</a>
+<a href="https://YOUR-BLOG-URL"><img src="https://img.shields.io/badge/Blog-8CE99A?style=for-the-badge&logo=rss&logoColor=000000" alt="Blog">localhost</a>
 
 </div>

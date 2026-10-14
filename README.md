@@ -21,8 +21,8 @@
 <br><br>
 
 <!-- Thay YOUR-LINKEDIN, YOUR-EMAIL, YOUR-BLOG-URL bằng thông tin của bạn -->
-<a href="https://www.linkedin.com/in/YOUR-LINKEDIN"><img src="https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn">https://www.linkedin.com/in/phuongnh030236</a>
-<a href="mailto:YOUR-EMAIL"><img src="https://img.shields.io/badge/Email-FF8FAB?style=for-the-badge&logo=gmail&logoColor=000000" alt="Email">phuongnguyen030236@gmail.com</a>
-<a href="https://YOUR-BLOG-URL"><img src="https://img.shields.io/badge/Blog-8CE99A?style=for-the-badge&logo=rss&logoColor=000000" alt="Blog">localhost</a>
+<a href="https://www.linkedin.com/in/phuongnh030236"><img src="https://img.shields.io/badge/LinkedIn-000000?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"></a>
+<a href="mailto:phuongnguyen030236@gmail.com"><img src="https://img.shields.io/badge/Email-FF8FAB?style=for-the-badge&logo=gmail&logoColor=000000" alt="Email"></a>
+<a href="https://localhost:8080"><img src="https://img.shields.io/badge/Blog-8CE99A?style=for-the-badge&logo=rss&logoColor=000000" alt="Blog"></a>
 
 </div>

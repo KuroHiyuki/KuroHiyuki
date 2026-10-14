@@ -2,7 +2,7 @@
 
 <img src="assets/header.svg" alt="Nguyễn Phương, Software Engineer" width="100%">
 
-<img src="assets/marquee.svg" alt="Software Engineer / Web / API / Cloud" width="100%">
+<img src="assets/marquee.svg" alt="Software Engineer / Ship fast / Break nothing" width="100%">
 
 </div>
 
@@ -12,6 +12,12 @@
 <td width="50%"><img src="assets/stats.svg" alt="GitHub stats" width="100%"></td>
 </tr>
 </table>
+
+<img src="assets/about.svg" alt="About me" width="100%">
+
+<img src="assets/projects.svg" alt="Projects" width="100%">
+
+<img src="assets/footer.svg" alt="Thanks for visiting" width="100%">
 
 <div align="center">
 

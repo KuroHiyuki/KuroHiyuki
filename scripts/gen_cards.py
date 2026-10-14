@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Sinh assets/langs.svg (ranked bars ngôn ngữ) và assets/stats.svg (4 ô số liệu).
+"""Generate assets/langs.svg, assets/stats.svg and assets/projects.svg.
 
-Chạy trong GitHub Actions (xem .github/workflows/update-cards.yml). Chỉ dùng thư viện chuẩn.
+Runs in GitHub Actions (see .github/workflows/update-cards.yml). Standard library only.
 
-Chạy thử trên máy:
-    python scripts/gen_cards.py --demo                 # dữ liệu mẫu, không gọi API
-    GH_USER=ten-ban python scripts/gen_cards.py        # dữ liệu thật (nên có GITHUB_TOKEN)
+Local test:
+    python scripts/gen_cards.py --demo
+    GH_USER=your-name python scripts/gen_cards.py
 """
 import argparse
 import json
@@ -22,6 +22,8 @@ COLORS = ["#74C0FC", "#B197FC", "#8CE99A", "#FFD43B"]
 MONO = "'Courier New', Courier, monospace"
 SANS = "Arial, Helvetica, sans-serif"
 W, H = 390, 250
+EXCLUDE_LANGS = {"CSS", "HTML", "SCSS", "Dockerfile"}  # hidden from the language ranking
+PW = 800  # projects card width
 
 DEMO = {
     "langs": {"TypeScript": 450, "C#": 300, "Python": 150, "Shell": 60, "HTML": 40},
@@ -29,6 +31,10 @@ DEMO = {
     "repos": 8,
     "prs": 5,
     "followers": 3,
+    "projects": [
+        {"name": "Rookie-Ecommerce", "desc": "Full-stack e-commerce application", "lang": "C#", "stars": 1},
+        {"name": "demo-api", "desc": "Sample REST API with JWT auth", "lang": "TypeScript", "stars": 0},
+    ],
 }
 
 
@@ -61,6 +67,11 @@ def fetch_data(user, token):
         except urllib.error.HTTPError:
             continue
 
+    top = sorted(own, key=lambda r: (r["stargazers_count"], r["pushed_at"]), reverse=True)[:4]
+    projects = [
+        {"name": r["name"], "desc": r["description"] or "", "lang": r["language"] or "", "stars": r["stargazers_count"]}
+        for r in top
+    ]
     prs = api_get(f"/search/issues?q=author:{user}+type:pr&per_page=1", token)["total_count"]
     return {
         "langs": dict(langs),
@@ -68,16 +79,18 @@ def fetch_data(user, token):
         "repos": profile["public_repos"],
         "prs": prs,
         "followers": profile["followers"],
+        "projects": projects,
     }
 
 
 def top_languages(langs, n=3):
+    langs = {k: v for k, v in langs.items() if k not in EXCLUDE_LANGS}
     total = sum(langs.values()) or 1
     ranked = sorted(langs.items(), key=lambda kv: kv[1], reverse=True)
     rows = [(name, size / total * 100) for name, size in ranked[:n]]
     rest = sum(size for _, size in ranked[n:])
     if rest:
-        rows.append(("Khác", rest / total * 100))
+        rows.append(("Other", rest / total * 100))
     return rows
 
 
@@ -129,6 +142,34 @@ def render_stats(data):
     return card("#8CE99A", "// GITHUB STATS", "".join(parts))
 
 
+def render_projects(projects):
+    projects = projects[:4]
+    rows = max(1, (len(projects) + 1) // 2)
+    ph = 56 + rows * 112 + 12
+    colors = ["#74C0FC", "#FFD43B", "#8CE99A", "#B197FC"]
+    parts = [
+        f'<rect x="8" y="8" width="{PW - 10}" height="{ph - 10}" fill="#000000"/>',
+        f'<rect x="2" y="2" width="{PW - 10}" height="{ph - 10}" fill="#FF8FAB" stroke="#000000" stroke-width="3"/>',
+        f'<text x="20" y="32" font-family="{MONO}" font-size="14" font-weight="700" fill="#000000">// PROJECTS</text>',
+    ]
+    for i, pr in enumerate(projects):
+        cx = 20 + (i % 2) * 384
+        cy = 48 + (i // 2) * 112
+        desc = pr["desc"][:48] + ("…" if len(pr["desc"]) > 48 else "")
+        meta = " · ".join(x for x in [pr["lang"], f'★ {pr["stars"]}'] if x)
+        parts.append(
+            f'<rect x="{cx + 5}" y="{cy + 5}" width="368" height="98" fill="#000000"/>'
+            f'<rect x="{cx}" y="{cy}" width="368" height="98" fill="{colors[i % 4]}" stroke="#000000" stroke-width="3"/>'
+            f'<text x="{cx + 14}" y="{cy + 30}" font-family="{SANS}" font-size="20" font-weight="700" fill="#000000">{escape(pr["name"][:26])}</text>'
+            f'<text x="{cx + 14}" y="{cy + 56}" font-family="{SANS}" font-size="13" fill="#000000">{escape(desc)}</text>'
+            f'<text x="{cx + 14}" y="{cy + 82}" font-family="{MONO}" font-size="12" font-weight="700" fill="#000000">{escape(meta)}</text>'
+        )
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{PW}" height="{ph}" viewBox="0 0 {PW} {ph}" '
+        f'role="img" aria-label="Projects">{"".join(parts)}</svg>'
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--user", default=os.environ.get("GH_USER"))
@@ -140,14 +181,15 @@ def main():
         data = DEMO
     else:
         if not args.user:
-            sys.exit("Thiếu username: dùng --user hoặc biến môi trường GH_USER")
+            sys.exit("Missing username: use --user or the GH_USER env var")
         data = fetch_data(args.user, os.environ.get("GITHUB_TOKEN"))
 
     out = Path(args.out)
     out.mkdir(parents=True, exist_ok=True)
     (out / "langs.svg").write_text(render_langs(top_languages(data["langs"])), encoding="utf-8")
     (out / "stats.svg").write_text(render_stats(data), encoding="utf-8")
-    print(f"Đã ghi {out / 'langs.svg'} và {out / 'stats.svg'}")
+    (out / "projects.svg").write_text(render_projects(data["projects"]), encoding="utf-8")
+    print(f"Wrote cards to {out}/")
 
 
 if __name__ == "__main__":

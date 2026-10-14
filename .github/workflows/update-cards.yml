@@ -1,4 +1,4 @@
- name: Update profile cards
+name: Update profile cards
 
 on:
   schedule:

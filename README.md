@@ -17,6 +17,10 @@
 
 <img src="assets/projects.svg" alt="Projects" width="100%">
 
+<img src="assets/contrib.svg" alt="Contribution graph" width="100%">
+
+<img src="assets/activity.svg" alt="Contribution activity" width="100%">
+
 <img src="assets/footer.svg" alt="Thanks for visiting" width="100%">
 
 <div align="center">

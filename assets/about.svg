@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="230" viewBox="0 0 800 230" role="img" aria-label="About me">
+  <rect x="8" y="8" width="790" height="220" fill="#000000"/>
+  <rect x="2" y="2" width="790" height="220" fill="#74C0FC" stroke="#000000" stroke-width="3"/>
+  <text x="20" y="32" font-family="'Courier New', Courier, monospace" font-size="14" font-weight="700" fill="#000000">// ABOUT ME</text>
+  <text x="20" y="66" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#000000">I'm Phương, a full-stack engineer working with C# / .NET and TypeScript.</text>
+  <text x="20" y="90" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#000000">I like building products end to end, from API to UI, with code that's easy to maintain.</text>
+  <g font-family="'Courier New', Courier, monospace" font-size="12" font-weight="700" fill="#000000">
+    <rect x="25" y="125" width="240" height="80" fill="#000000"/><rect x="20" y="120" width="240" height="80" fill="#FFD43B" stroke="#000000" stroke-width="3"/>
+    <text x="32" y="145">CURRENTLY</text><text x="32" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16">Rookie-Ecommerce</text>
+    <rect x="285" y="125" width="240" height="80" fill="#000000"/><rect x="280" y="120" width="240" height="80" fill="#8CE99A" stroke="#000000" stroke-width="3"/>
+    <text x="292" y="145">LEARNING</text><text x="292" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16">Cloud &amp; DevOps</text>
+    <rect x="545" y="125" width="240" height="80" fill="#000000"/><rect x="540" y="120" width="240" height="80" fill="#FF8FAB" stroke="#000000" stroke-width="3"/>
+    <text x="552" y="145">ASK ME ABOUT</text><text x="552" y="178" font-family="Arial, Helvetica, sans-serif" font-size="16">.NET, React, API</text>
+  </g>
+</svg>

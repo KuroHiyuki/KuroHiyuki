@@ -2,7 +2,7 @@
 
 <img src="assets/header.svg" alt="Nguyễn Phương, Software Engineer" width="100%">
 
-<img src="assets/marquee.svg" alt="Fullstack Developer / Web / API / Cloud" width="100%">
+<img src="assets/marquee.svg" alt="Software Engineer / Web / API / Cloud" width="100%">
 
 </div>
 

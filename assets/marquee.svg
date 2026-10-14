@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="44" viewBox="0 0 800 44" role="img" aria-label="Fullstack Developer / Web / API / Cloud">
+  <style>
+    .tape { animation: move 14s linear infinite; }
+    @keyframes move { from { transform: translateX(0); } to { transform: translateX(-403.2px); } }
+    @media (prefers-reduced-motion: reduce) { .tape { animation: none; } }
+  </style>
+  <rect width="800" height="44" fill="#000000"/>
+  <g class="tape">
+    <text x="0" y="29" textLength="2006.4" lengthAdjust="spacing" font-family="'Courier New', Courier, monospace" font-size="16" font-weight="700" fill="#FFD43B">FULLSTACK DEVELOPER / WEB / API / CLOUD / FULLSTACK DEVELOPER / WEB / API / CLOUD / FULLSTACK DEVELOPER / WEB / API / CLOUD / FULLSTACK DEVELOPER / WEB / API / CLOUD / FULLSTACK DEVELOPER / WEB / API / CLOUD /</text>
+  </g>
+</svg>
